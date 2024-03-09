@@ -1,48 +1,75 @@
-class Todo {
+class Task {
     constructor(title, description) {
-      this.title = title;
-      this.description = description;
-      this.next = null;
+        this.title = title;
+        this.description = description;
     }
-  }
-  
-  class TodoList {
+}
+
+class Node {
+    constructor(value, next = null) {
+        this.value = value;
+        this.next = next;
+    }
+}
+
+class LinkedList {
     constructor() {
-      this.head = null;
-      this.size = 0;
+        this.head = null;
+        this.tail = null;
     }
-  
-    add(title, description) {
-      const newTodo = new Todo(title, description);
-      if (!this.head) {
-        this.head = newTodo;
-      } else {
-        let current = this.head;
-        while (current.next) {
-          current = current.next;
+
+    append(value) {
+        const newNode = new Node(value);
+        if (!this.head) {
+            this.head = newNode;
+        } else {
+            this.tail.next = newNode;
         }
-        current.next = newTodo;
-      }
-      this.size++;
+        this.tail = newNode;
     }
-  
+
+    peek(value, current = this.head) {
+        if (this.head === null) {
+            return false;
+        }
+
+        if (current !== null) {
+            if (current.value === value) {
+                return true;
+            } else {
+                return this.peek(value, current.next);
+            }
+        }
+
+        return false;
+    }
+
+    size(current = this.head, acum = 1) {
+        if (this.head === null) {
+            return 0;
+        }
+        if (current.next !== null) {
+            return this.size(current.next, acum + 1);
+        }
+        return acum;
+    }
+
     print() {
-      let current = this.head;
-      while (current) {
-        console.log(`Title: ${current.title}, Description: ${current.description}`);
-        current = current.next;
-      }
+        let node = this.head;
+        while (node != null) {
+            console.log(`Tarea: ${node.value.title} | Descripción: ${node.value.description} | Siguiente: ${node.next ? node.next.value.title : null}`);
+            node = node.next;
+        }
     }
-  }
-  
-  // Create a new TODO list
-  const todoList = new TodoList();
-  
-  // Add some tasks
-  todoList.add("Task 1", "Description for Task 1");
-  todoList.add("Task 2", "Description for Task 2");
-  todoList.add("Task 3", "Description for Task 3");
-  
-  // Print all TODOs
-  todoList.print();
+}
+
+
+const todoList = new LinkedList();
+
+todoList.append(new Task("Complete math assignment", "Solve exercises 1 to 5 from chapter 3"));
+todoList.append(new Task("Write essay for English class", "Topic: Impact of technology on society"));
+todoList.append(new Task("Prepare presentation for meeting", "Research statistics and create slides"));
+
+todoList.print();
+
   
