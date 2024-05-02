@@ -5,6 +5,6 @@ import FirstApp from './FirstApp.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <FirstApp></FirstApp>
+    <FirstApp value = {10}></FirstApp>
   </React.StrictMode>,
 )
