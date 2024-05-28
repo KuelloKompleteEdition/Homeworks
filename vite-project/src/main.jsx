@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import FirstApp from './FirstApp.jsx'
-import { ComponentApp } from './ComponentApp.jsx'
+import  ComponentApp  from './ComponentApp.jsx'
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
