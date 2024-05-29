@@ -8,7 +8,7 @@ export const useCounter = (value) =>{
     }
 
     const handleSubstract = () => { 
-        setCounter( counter - 1)
+        setCounter(counter > 1 ? counter - 1 : 1)
     }
 
     const handleReset = () => { 
