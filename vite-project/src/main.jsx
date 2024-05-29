@@ -1,12 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import FirstApp from './FirstApp.jsx'
-import { Father } from './components/Father.jsx'
+import { TodoApp } from './components/ToDo.jsx'
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <FirstApp></FirstApp>
-    <Father></Father>
+    <TodoApp></TodoApp>
   </React.StrictMode>,
 )
