@@ -1,11 +1,9 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import FirstApp from './FirstApp.jsx'
-import { TodoApp } from './components/ToDo.jsx'
-
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <TodoApp></TodoApp>
+    <App />
   </React.StrictMode>,
-)
+);
