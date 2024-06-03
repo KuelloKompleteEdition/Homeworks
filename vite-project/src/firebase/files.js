@@ -1,5 +1,5 @@
 import { getStorage, ref, uploadBytesResumable, listAll, deleteObject } from "firebase/storage";
-import { storage } from "./config";  // Ensure this imports the correct Firebase storage configuration
+import { storage } from "./config"; 
 
 const storageRef = ref(storage, 'files/');
 
