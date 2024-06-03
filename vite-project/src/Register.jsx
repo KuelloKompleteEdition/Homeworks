@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { onAuthStateChanged } from 'firebase/auth';
-import { loginUser, logoutUser, loginGoogle } from './store/Thunks';
+import { registerUser, loginGoogle } from './store/Thunks';
 import { checkingCredentials } from './store/authSlice';
 import { auth } from './firebase/config';
 import { Link } from 'react-router-dom';
 
-const Login = () => {
+const Registro = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
@@ -25,13 +25,9 @@ const Login = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    dispatch(loginUser(email, password));
+    dispatch(registerUser(email, password));
     setEmail('');
     setPassword('');
-  };
-
-  const handleSignOut = async () => {
-    dispatch(logoutUser());
   };
 
   const onChangeEmail = event => {
@@ -48,18 +44,18 @@ const Login = () => {
 
   return (
     <div>
-      <h2>Login</h2>
+      <h2>Registro</h2>
       <form onSubmit={handleSubmit}>
-        <input type="email" placeholder='Email' value={email} onChange={onChangeEmail} required />
-        <input type="password" placeholder='Password' value={password} onChange={onChangePassword} required />
-        <button type="submit" disabled={!status}>Login</button>
-        <button onClick={handleLoginWithGoogle}>Login with Google</button>
+        <input type="email" placeholder="Email" value={email} onChange={onChangeEmail} required />
+        <input type="password" placeholder="Password" value={password} onChange={onChangePassword} required />
+        <button type="submit" disabled={status}>Registrarse</button>
+        <button onClick={handleLoginWithGoogle}>Registrarse con Google</button>
       </form>
       <div>
-        <Link to="/registro">Registrarse</Link>
+        <Link to="/login">Volver al Login</Link>
       </div>
     </div>
   );
 };
 
-export default Login;
+export default Registro;
