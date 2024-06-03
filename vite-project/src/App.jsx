@@ -3,16 +3,24 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import NavComponent from './components/NavComponent';
 import FirstApp from './FirstApp';
 import { TodoApp } from './components/ToDo';
+import LoginPage from './Login';
+import LogoutButton from './components/LogoutButton';
+import PrivateRoute from './components/PrivateRoute';
+import { UserProvider } from './context/UserProvider';
 
 const App = () => {
     return (
-        <Router>
-            <NavComponent />
-            <Routes>
-                <Route path="/firstapp" element={<FirstApp />} />
-                <Route path="/todo" element={<TodoApp />} />
-            </Routes>
-        </Router>
+        <UserProvider>
+            <Router>
+                <NavComponent />
+                <Routes>
+                    <Route path="/login" element={<LoginPage />} />
+                    <Route path="/logout" element={<LogoutButton />} />
+                    <Route path="/firstapp" element={<PrivateRoute><FirstApp /></PrivateRoute>} />
+                    <Route path="/todo" element={<PrivateRoute><TodoApp /></PrivateRoute>} />
+                </Routes>
+            </Router>
+        </UserProvider>
     );
 };
 

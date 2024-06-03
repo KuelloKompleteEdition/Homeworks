@@ -1,15 +1,13 @@
-import React, {useState} from "react";
-import { UserContext } from "./UserContext";
+import React, { useState } from 'react';
+import { UserContext } from '../context/UserContext';
 
-const user = {}
-
-export const userProvider = ({children})=>{
-    const [user,setUser] = useState()
+export const UserProvider = ({ children }) => {
+    const [user, setUser] = useState(null);
+    const [lastVisitedPage, setLastVisitedPage] = useState('/');
 
     return (
-        <UserContext.Provider value={{user,setUser}}>
+        <UserContext.Provider value={{ user, setUser, lastVisitedPage, setLastVisitedPage }}>
             {children}
         </UserContext.Provider>
-    )
-
-}
+    );
+};
